@@ -1,11 +1,11 @@
-group = "app.template"
+group = "io.dylanpdx"
 
 patches {
     about {
-        name = "UserXYZ Patches"
+        name = "Dylan's Patches"
         description = "Patches for apps I like"
         source = "git@github.com:UserXYZ/morphe-patches.git"
-        author = "Awesome dev"
+        author = "dylanpdx"
         contact = "na"
         website = "na"
         license = "GPLv3"
