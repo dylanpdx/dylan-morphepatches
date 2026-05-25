@@ -8,6 +8,14 @@ import org.w3c.dom.Element
 val bubbleSupportPatch = bytecodePatch("Bubbles", default = false) {
     compatibleWith("com.discord")
     extendWith("extensions/discord.mpe") // TODO: move to discord-bubble.mpe?
+
+    /*
+        Classes/Methods to look into:
+    com.discord.notifications.renderer.NotificationRenderer$display$1 -> invokeSuspend
+    com.discord.notifications.renderer.utils.NotificationManagerUtilsKt -> notify (3 params)
+
+     */
+
     dependsOn(
         resourcePatch {
             execute {
