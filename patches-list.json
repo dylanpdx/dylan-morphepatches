@@ -1,4 +1,44 @@
 {
-  "version": "",
-  "patches": []
+  "version": "1.0.0",
+  "patches": [
+    {
+      "name": "Disable IAP",
+      "description": "Disables inapp purchases by preventing connection to billing client",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Example Patch",
+      "description": "Example patch to start with.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.example.app",
+          "name": "XYZ app",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#FF0045",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.0.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "1.0.2",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    }
+  ]
 }

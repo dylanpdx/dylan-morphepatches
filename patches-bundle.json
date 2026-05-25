@@ -1,7 +1,7 @@
 {
-  "created_at": "",
-  "description": "",
-  "download_url": "",
+  "created_at": "2026-05-25T21:01:31",
+  "description": "## 1.0.0 (2026-05-25)\n\n### ✨ New Features\n\n* DisableIap Patch ([972f81e](https://github.com/dylanpdx/dylan-morphepatches/commit/972f81edb63ebed46807781a8795a21b3398ca10))",
+  "download_url": "https://github.com/dylanpdx/dylan-morphepatches/releases/download/v1.0.0/patches-1.0.0.mpp",
   "signature_download_url": "",
-  "version": ""
+  "version": "1.0.0"
 }
