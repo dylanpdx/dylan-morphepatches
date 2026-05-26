@@ -5,57 +5,29 @@
 package app.morphe.patches.all.misc.iap
 
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
+import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
+import app.morphe.patches.all.misc.transformation.transformInstructionsPatch
+import app.morphe.patches.shared.misc.string.replaceStringPatch
+import app.morphe.util.getRandomString
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction10x
-import com.android.tools.smali.dexlib2.iface.ClassDef
-import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
-import com.android.tools.smali.dexlib2.util.MethodUtil
 
 @Suppress("unused")
-internal val disableIapPatch = bytecodePatch (
+internal val disableIapPatch = bytecodePatch(
     name = "Disable IAP",
-    description = "Disables inapp purchases by preventing connection to billing client"
+    description = "Disables inapp purchases by preventing connection to billing client",
+    default = false,
 ) {
-    fun MutableClass.findMutableMethodOf(method: MethodReference) = this.methods.first {
-        MethodUtil.methodSignaturesMatch(it, method)
-    }
-
-    fun findStartConnectionIndices(classDef: ClassDef, method: Method): Sequence<Int>? =
-        method.implementation?.instructions?.asSequence()?.withIndex()?.mapNotNull { (index, instruction) ->
-            if (instruction.opcode != Opcode.INVOKE_VIRTUAL) return@mapNotNull null
-            val ref = (instruction as? ReferenceInstruction)?.reference as? MethodReference?: return@mapNotNull null
-            if (ref.definingClass == "Lcom/android/billingclient/api/BillingClient;" && ref.name == "startConnection")
-                index
-            else
-                null
-        }
-
-    execute {
-        buildMap {
-            classDefForEach { classDef ->
-                val methods = buildList {
-                    classDef.methods.forEach { method ->
-                        if (findStartConnectionIndices(classDef, method)?.any() == true) add(method)
-                    }
-                }
-                if (methods.isNotEmpty()) put(classDef, methods)
-            }
-        }.forEach { (classDef, methods) ->
-            val mutableClass = mutableClassDefBy(classDef)
-
-            methods.map(mutableClass::findMutableMethodOf).forEach methods@{ mutableMethod ->
-                val indices = findStartConnectionIndices(mutableClass, mutableMethod)
-                    ?.toCollection(ArrayDeque()) ?: return@methods
-
-                while (!indices.isEmpty()) {
-                    val index = indices.removeLast()
-                    val nop = BuilderInstruction10x(Opcode.NOP)// idk if this is the correct way, maybe redir to a custom method would be better
-                    mutableMethod.implementation!!.replaceInstruction(index, nop)
-                }
-            }
-        }
-    }
+    dependsOn(
+        replaceStringPatch(
+            from = "com.android.vending.billing.InAppBillingService.BIND",
+            to = getRandomString(10),
+        ),
+        replaceStringPatch(
+            from = "com.android.vending",
+            to = getRandomString(10),
+        )
+    )
 }
