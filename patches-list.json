@@ -1,5 +1,5 @@
 {
-  "version": "1.0.1",
+  "version": "1.1.0",
   "patches": [
     {
       "name": "Disable IAP",
@@ -42,6 +42,26 @@
         }
       ],
       "options": []
+    },
+    {
+      "name": "Spoof network country",
+      "description": "Spoofs the country code returned by TelephonyManager",
+      "default": false,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": null,
+      "options": [
+        {
+          "key": "countryCode",
+          "title": "Country code",
+          "description": "The 2 letter country code to spoof (us, gb, de, etc.)",
+          "required": true,
+          "type": "kotlin.String",
+          "default": "us",
+          "values": null
+        }
+      ]
     }
   ]
 }

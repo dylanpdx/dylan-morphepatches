@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-05-26T23:35:01",
-  "description": "## [1.0.1](https://github.com/dylanpdx/dylan-morphepatches/compare/v1.0.0...v1.0.1) (2026-05-26)\n\n### 🐛 Bug Fixes\n\n* Use different method of blocking IAP ([f285326](https://github.com/dylanpdx/dylan-morphepatches/commit/f28532658b01ac64a2de7663d08eea53e9724084))",
-  "download_url": "https://github.com/dylanpdx/dylan-morphepatches/releases/download/v1.0.1/patches-1.0.1.mpp",
+  "created_at": "2026-05-27T20:02:04",
+  "description": "## [1.1.0](https://github.com/dylanpdx/dylan-morphepatches/compare/v1.0.1...v1.1.0) (2026-05-27)\n\n### ✨ New Features\n\n* Add SpoofNetworkCountryPatch ([265f473](https://github.com/dylanpdx/dylan-morphepatches/commit/265f473c5cdb5a86754984ee4f6ae9384b2ec348))",
+  "download_url": "https://github.com/dylanpdx/dylan-morphepatches/releases/download/v1.1.0/patches-1.1.0.mpp",
   "signature_download_url": "",
-  "version": "1.0.1"
+  "version": "1.1.0"
 }

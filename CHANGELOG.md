@@ -1,3 +1,9 @@
+## [1.1.0](https://github.com/dylanpdx/dylan-morphepatches/compare/v1.0.1...v1.1.0) (2026-05-27)
+
+### ✨ New Features
+
+* Add SpoofNetworkCountryPatch ([265f473](https://github.com/dylanpdx/dylan-morphepatches/commit/265f473c5cdb5a86754984ee4f6ae9384b2ec348))
+
 ## [1.0.1](https://github.com/dylanpdx/dylan-morphepatches/compare/v1.0.0...v1.0.1) (2026-05-26)
 
 ### 🐛 Bug Fixes
