@@ -1,11 +1,14 @@
 {
-  "version": "1.0.0",
+  "version": "1.0.1",
   "patches": [
     {
       "name": "Disable IAP",
       "description": "Disables inapp purchases by preventing connection to billing client",
-      "default": true,
-      "dependencies": [],
+      "default": false,
+      "dependencies": [
+        "BytecodePatch",
+        "BytecodePatch"
+      ],
       "compatiblePackages": null,
       "options": []
     },
